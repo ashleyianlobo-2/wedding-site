@@ -223,7 +223,7 @@ html { scrollbar-color: var(--gold) var(--green-900); }
 .plate-row--alt { background: var(--green-900); max-width: none; }
 .plate-row--alt > * { }
 .plate-row--alt .col:first-child { margin-left: max(var(--gutter), calc((100% - var(--wrap)) / 2)); }
-.col--label { position: sticky; top: 14vh; display: grid; gap: 0.6rem; }
+.col--label { position: sticky; top: 14vh; display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.6rem 1rem; }
 .col--label .tag { padding-bottom: 0.6rem; border-bottom: 1px solid rgba(201,162,39,0.3); }
 .col--body { min-width: 0; }
 
@@ -237,7 +237,7 @@ html { scrollbar-color: var(--gold) var(--green-900); }
 
 /* Roce / Wedding tabs — CSS-only toggle (radios hidden but focusable) */
 .event-radio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
-.event-tabs { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem; }
+.event-tabs { display: flex; flex-direction: row; gap: 1rem; }
 .event-tab {
   font-size: var(--t-0); font-style: italic; font-family: "Bodoni Moda", serif;
   color: var(--cream-dim); cursor: pointer; width: fit-content;

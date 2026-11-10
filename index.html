@@ -186,7 +186,7 @@
       </div>
 
       <fieldset class="field field--choice">
-        <legend>Shall you attend the Roce?<span class="req" aria-hidden="true">*</span></legend>
+        <legend>Would you be attending the Roce?<span class="req" aria-hidden="true">*</span></legend>
         <div class="choice">
           <label class="pill"><input type="radio" name="roce" value="Accepts with pleasure" required /><span>Accepts with pleasure</span></label>
           <label class="pill"><input type="radio" name="roce" value="Declines with regret" /><span>Declines with regret</span></label>
@@ -196,7 +196,7 @@
 
       <!-- Shown only when the Roce is accepted (animated dropdown, ported from emerald-ui) -->
       <div class="field field--conditional" data-when="roce-yes" hidden>
-        <label id="partyLabel">Number in your party for the Roce</label>
+        <label id="partyLabel">Number of guests attending the Roce:</label>
         <div class="dropdown" data-dropdown>
           <button type="button" class="dropdown__btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="partyLabel">
             <span class="dropdown__text" data-dropdown-text>Select a number</span>
@@ -208,18 +208,13 @@
             <button type="button" class="dropdown__opt" role="option" data-value="3">3 guests</button>
             <button type="button" class="dropdown__opt" role="option" data-value="4">4 guests</button>
             <button type="button" class="dropdown__opt" role="option" data-value="5">5 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="6">6 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="7">7 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="8">8 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="9">9 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="10">10 guests</button>
           </div>
           <input type="hidden" name="roce_headcount" data-dropdown-input />
         </div>
       </div>
 
       <fieldset class="field field--choice">
-        <legend>Shall you attend the Wedding?<span class="req" aria-hidden="true">*</span></legend>
+        <legend>Would you be attending the Wedding?<span class="req" aria-hidden="true">*</span></legend>
         <div class="choice">
           <label class="pill"><input type="radio" name="wedding" value="Accepts with pleasure" required /><span>Accepts with pleasure</span></label>
           <label class="pill"><input type="radio" name="wedding" value="Declines with regret" /><span>Declines with regret</span></label>
@@ -229,7 +224,7 @@
 
       <!-- Shown only when the Wedding is accepted -->
       <div class="field field--conditional" data-when="wedding-yes" hidden>
-        <label id="partyLabelWedding">Number in your party for the Wedding</label>
+        <label id="partyLabelWedding">Number of guests attending the Wedding:</label>
         <div class="dropdown" data-dropdown>
           <button type="button" class="dropdown__btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="partyLabelWedding">
             <span class="dropdown__text" data-dropdown-text>Select a number</span>
@@ -241,20 +236,15 @@
             <button type="button" class="dropdown__opt" role="option" data-value="3">3 guests</button>
             <button type="button" class="dropdown__opt" role="option" data-value="4">4 guests</button>
             <button type="button" class="dropdown__opt" role="option" data-value="5">5 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="6">6 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="7">7 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="8">8 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="9">9 guests</button>
-            <button type="button" class="dropdown__opt" role="option" data-value="10">10 guests</button>
           </div>
           <input type="hidden" name="wedding_headcount" data-dropdown-input />
         </div>
       </div>
 
       <button type="submit" class="ihbtn" id="rsvpSubmit">
-        <span class="ihbtn__text">Seal &amp; send</span>
+        <span class="ihbtn__text">Submit</span>
         <span class="ihbtn__hover" aria-hidden="true">
-          <span>Seal &amp; send</span>
+          <span>Submit</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
         </span>
         <span class="ihbtn__dot" aria-hidden="true"></span>

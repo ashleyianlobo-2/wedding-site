@@ -321,7 +321,7 @@ html { scrollbar-color: var(--gold) var(--green-900); }
 .field .muted { color: #5f521f; }
 
 /* Well-wishes intro — reads in the couple's warm voice above the note box */
-.wishes-note { margin: 0; font-family: "Spectral", serif; font-weight: 400; font-size: var(--t-0); line-height: 1.65; color: #5f521f; text-transform: none; letter-spacing: normal; }
+.wishes-note { margin: 0; font-family: "Spectral", serif; font-weight: 400; font-size: var(--t--1); line-height: 1.65; color: #5f521f; text-transform: none; letter-spacing: normal; }
 .wishes-note:first-child { font-weight: 700; color: #4a4220; }
 .req { color: var(--gold); margin-left: 0.2em; }
 

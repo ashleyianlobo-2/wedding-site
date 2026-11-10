@@ -553,9 +553,7 @@ form?.addEventListener("submit", async (e) => {
       if (t) t.textContent = "Select a number";
     });
     statusEl.className = "form__status is-ok";
-    statusEl.textContent = (accepts(roce) || accepts(wedding))
-      ? "Received — we are overjoyed you'll be with us."
-      : "Received — thank you for telling us; you'll be missed.";
+    statusEl.textContent = "Received";
   } catch (err) {
     statusEl.className = "form__status is-err";
     statusEl.textContent = "The reply didn't send — please try again, or email us.";

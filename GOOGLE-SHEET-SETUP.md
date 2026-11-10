@@ -20,8 +20,8 @@ in the form closely enough for you to eyeball it (it's only used to see who's mi
 ### Tab `Responses` — filled automatically, just add the headers
 Row 1 headers, exactly in this order (the script writes to these columns):
 
-| A: Timestamp | B: Name | C: Roce reply | D: Roce guests | E: Wedding reply | F: Wedding guests |
-|--------------|---------|---------------|----------------|------------------|-------------------|
+| A: Timestamp | B: Name | C: Roce reply | D: Roce guests | E: Wedding reply | F: Wedding guests | G: Wishes |
+|--------------|---------|---------------|----------------|------------------|-------------------|-----------|
 
 Leave rows 2+ empty. The form fills them.
 
@@ -58,7 +58,8 @@ function doPost(e) {
     d.roce || '',
     d.roce_headcount || '',
     d.wedding || '',
-    d.wedding_headcount || ''
+    d.wedding_headcount || '',
+    d.wishes || ''
   ]);
   return ContentService
     .createTextOutput(JSON.stringify({ result: 'ok' }))

@@ -5,7 +5,7 @@
 /* PASTE YOUR GOOGLE APPS SCRIPT URL HERE (ends in /exec).
    See GOOGLE-SHEET-SETUP.md. Until set, the form shows a
    "not connected yet" note instead of sending. */
-const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbz_zcIp8ibivLltZVRdPXyOl1Kp0RKR4Aj_CuetZ-2ja7kyo50ipm-EOgQej6KEln3Y/exec";
+const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbyDvEV-I16JGOVQihRioQGRflIZJmPgcUpT6gvda3c4sckdBOW1IgxkeiJmSlhoq--M/exec";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

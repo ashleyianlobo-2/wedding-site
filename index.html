@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Alisha &amp; Nelson — We're getting married</title>
+<meta name="description" content="The wedding of Alisha and Nelson — 20 December 2026, Our Lady of Assumption Church, Mumbai. A botanical specimen of two lives pressed into one." />
+
+<!-- ============================================================ -->
+<!--  FILL YOUR DETAILS: search this file for  {{  — every        -->
+<!--  placeholder. Paste the Apps Script URL at the top of        -->
+<!--  script.js. Setup for the RSVP Sheet: GOOGLE-SHEET-SETUP.md. -->
+<!-- ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Geist:wght@600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- In-flow top anchor: #top on the fixed masthead never scrolls (always in view) -->
+<span id="top" aria-hidden="true"></span>
+
+<!-- Authored line-engraving botanical motifs (gold hairline). Reused as plates. -->
+<svg width="0" height="0" class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="sprig" viewBox="-60 0 120 240">
+      <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M0,238 C0,180 0,120 0,8" />
+        <g>
+          <path d="M0,210 C-26,196 -40,172 -42,150 C-18,152 -4,176 0,206 Z" />
+          <path d="M0,210 C26,196 40,172 42,150 C18,152 4,176 0,206 Z" />
+          <path d="M0,168 C-24,156 -37,134 -39,114 C-16,116 -3,138 0,164 Z" />
+          <path d="M0,168 C24,156 37,134 39,114 C16,116 3,138 0,164 Z" />
+          <path d="M0,128 C-21,117 -32,97 -34,79 C-13,81 -2,101 0,124 Z" />
+          <path d="M0,128 C21,117 32,97 34,79 C13,81 2,101 0,124 Z" />
+          <path d="M0,90 C-17,81 -26,64 -28,49 C-10,51 -1,69 0,87 Z" />
+          <path d="M0,90 C17,81 26,64 28,49 C10,51 1,69 0,87 Z" />
+          <path d="M0,54 C-12,47 -18,34 -19,23 C-6,25 -1,40 0,52 Z" />
+          <path d="M0,54 C12,47 18,34 19,23 C6,25 1,40 0,52 Z" />
+        </g>
+        <circle cx="0" cy="8" r="4" />
+      </g>
+    </symbol>
+    <symbol id="flourish" viewBox="0 0 160 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">
+        <path d="M0,12 H58" />
+        <path d="M102,12 H160" />
+        <path d="M58,12 C66,12 70,4 76,4 C82,4 84,12 80,12 C84,12 86,20 92,20 C98,20 102,12 102,12" />
+        <circle cx="80" cy="12" r="2.4" fill="currentColor" stroke="none" />
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ───────────────────────── MASTHEAD ───────────────────────── -->
+<header class="masthead">
+  <a class="masthead__mark" href="#top" aria-label="Back to top"><span class="plate__frame" aria-hidden="true"></span><img class="monogram" src="assets/monogram.png" alt="N &amp; A" /></a>
+  <a class="ihbtn masthead__rsvp" href="#rsvp">
+    <span class="ihbtn__text">R.S.V.P.</span>
+    <span class="ihbtn__hover" aria-hidden="true">
+      <span>R.S.V.P.</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+    </span>
+    <span class="ihbtn__dot" aria-hidden="true"></span>
+  </a>
+</header>
+
+<!-- ───────────────────────── PORTAL (scroll-through-type) ───────────────────────── -->
+<!-- Opening splash: the camera flies through a letter of this word into the card.
+     PORTAL_WORD: one word, no spaces. A letter with a solid bowl/stem
+     (O, B, R, A, D…) reads best; the focal letter is picked automatically.
+     Add data-focus="O" to force a letter; data-scroll="2.4" tunes travel (1–8). -->
+<section class="portal" id="portal" data-portal data-scroll="1.8" aria-label="Forever">
+  <div class="portal__pin">
+    <div class="portal__field" aria-hidden="true"></div>
+    <svg class="portal__art" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="portal-clip" clipPathUnits="userSpaceOnUse">
+          <text class="portal__glyph" x="0" y="0">FOREVER</text>
+        </clipPath>
+      </defs>
+    </svg>
+    <div class="portal__timer" data-vapor>
+      <div class="vapor" data-vc-root>
+        <time class="vapor__time" data-countdown aria-live="off">
+          <span class="vapor__unit"><span class="vapor__grp"><span data-vc-digit>0</span><span data-vc-digit>0</span><span data-vc-digit>0</span></span><span class="vapor__lbl" aria-hidden="true">Days</span></span>
+          <span class="vapor__sep" data-vc-sep aria-hidden="true">:</span>
+          <span class="vapor__unit"><span class="vapor__grp"><span data-vc-digit>0</span><span data-vc-digit>0</span></span><span class="vapor__lbl" aria-hidden="true">Hours</span></span>
+          <span class="vapor__sep" data-vc-sep aria-hidden="true">:</span>
+          <span class="vapor__unit"><span class="vapor__grp"><span data-vc-digit>0</span><span data-vc-digit>0</span></span><span class="vapor__lbl" aria-hidden="true">Minutes</span></span>
+          <span class="vapor__sep" data-vc-sep aria-hidden="true">:</span>
+          <span class="vapor__unit"><span class="vapor__grp"><span data-vc-digit>0</span><span data-vc-digit>0</span></span><span class="vapor__lbl" aria-hidden="true">Seconds</span></span>
+        </time>
+        <canvas class="vapor__canvas" data-vc-canvas aria-hidden="true"></canvas>
+      </div>
+      <span class="portal__until">until</span>
+    </div>
+    <p class="portal__cap tag" aria-hidden="true">scroll to enter &nbsp;↓</p>
+  </div>
+</section>
+
+<!-- ───────────────────────── FRONTISPIECE (the card) ───────────────────────── -->
+<section class="front" id="front">
+  <div class="front__card">
+    <!-- Invitation card image: save it as assets/invitation.jpg -->
+    <img class="invite-card" data-rise="1" src="assets/invitation.jpg" width="1911" height="2690"
+      alt="Wedding invitation. Mr. John Lobo and Mrs. Gracie Lobo invite you to celebrate the wedding of their daughter Alisha with Nelson, son of Mr. Joseph Pereira and Mrs. Violet Pereira. Nuptial Mass: Sunday, 20 December 2026, 3:00 PM, Our Lady of Assumption Church, Kandivali (West), Mumbai. Followed by a reception at Galaxy Banquets, 6:30 PM, opposite Sakinaka Telephone Exchange, Andheri (East), Mumbai. No box gifts and bouquets. Roce ceremony: Sunday, 13 December 2026, 6:00 PM, Aadhya (Adyar Gardens), near Sahyadri College of Engineering and Management, Adyar, Mangalore. Roce dress code: Indian traditional wear." />
+
+    <a class="cue" href="#details" aria-label="Read on" data-rise="2">
+      <span class="cue__word">turn the leaf</span>
+      <span class="cue__line" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
+<main>
+
+<!-- ───────────────────────── PLATE I — PARTICULARS (Roce / Wedding tabs) ───────────────────────── -->
+<section class="plate-row plate-row--alt" id="details">
+  <!-- CSS-only tabs: these radios drive which event panel shows (no JS) -->
+  <input type="radio" name="event" id="tab-roce" class="event-radio" checked />
+  <input type="radio" name="event" id="tab-wedding" class="event-radio" />
+  <div class="col col--label">
+    <p class="tag reveal">Plate I</p>
+    <div class="event-tabs reveal" data-d="1" role="tablist">
+      <label class="event-tab" for="tab-roce">Roce</label>
+      <label class="event-tab" for="tab-wedding">Wedding</label>
+    </div>
+  </div>
+  <div class="col col--body">
+    <div class="event-panel" data-event="roce">
+      <h2 class="heading">The Roce,<br />duly recorded</h2>
+      <dl class="ledger">
+        <div class="ledger__row"><dt>The date</dt><dd>13 December 2026</dd></div>
+        <div class="ledger__row"><dt>Assembly</dt><dd>6:00 PM</dd></div>
+        <div class="ledger__row"><dt>The venue</dt><dd>AADHYA (Adyar Gardens)</dd></div>
+        <div class="ledger__row"><dt>Situated</dt><dd>Near Sahyadri College of Engineering & Management, Adyar, Mangalore-575007</dd></div>
+        <div class="ledger__row"><dt>Attire</dt><dd>Indian Traditional Wear</dd></div>
+      </dl>
+    </div>
+    <div class="event-panel" data-event="wedding">
+      <h2 class="heading">The wedding day,<br />duly recorded</h2>
+      <dl class="ledger">
+        <div class="ledger__row"><dt>The date</dt><dd>20 December 2026</dd></div>
+        <div class="ledger__row"><dt>Assembly</dt><dd>6:30 PM</dd></div>
+        <div class="ledger__row"><dt>The venue</dt><dd>GALAXY BANQUETS</dd></div>
+        <div class="ledger__row"><dt>Situated</dt><dd>Opp. Sakinaka Telephone Exchange, Andheri (East), Mumbai-400072</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────── PLATE II — RSVP (reply card) ───────────────────────── -->
+<section class="reply" id="rsvp">
+  <canvas class="reply__dots" aria-hidden="true"></canvas>
+  <div class="plate plate--reply">
+    <span class="plate__frame" aria-hidden="true"></span>
+    <div class="reply__head">
+      <!-- Watching face: eyes follow the cursor, blink, and shut politely while the guest writes their note -->
+      <div class="peeker reveal" aria-hidden="true">
+        <svg class="peeker__ring" viewBox="0 0 140 150" width="140" height="150">
+          <circle class="peeker__band" cx="70" cy="118" r="28" />
+          <path class="peeker__band" d="M58 91 L62 84 M82 91 L78 84" /><!-- prongs -->
+          <path class="peeker__gem" d="M40 6 H100 L126 40 L70 92 L14 40 Z M14 40 H126 M40 6 L42 40 L70 92 L98 40 L100 6" />
+          <path class="peeker__gem" d="M60 64 Q70 73 80 64" /><!-- smile -->
+          <path class="peeker__band" d="M126 4 V16 M120 10 H132" /><!-- sparkle -->
+        </svg>
+        <span class="peeker__eyes">
+          <span class="peeker__eye"><span class="peeker__pupil"></span></span>
+          <span class="peeker__eye"><span class="peeker__pupil"></span></span>
+        </span>
+      </div>
+      <p class="tag reveal">Plate II</p>
+      <h2 class="heading center reveal" data-d="1">The favour of a reply</h2>
+      <p class="prose center reveal" data-d="2">Kindly respond by <em>30 November 2026</em>.</p>
+    </div>
+
+    <form class="form reveal" data-d="2" id="rsvpForm" novalidate>
+      <div class="field">
+        <label for="name">Name of guest<span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" required maxlength="120" placeholder="As it appears on the invitation" />
+        <p class="field__error" data-for="name"></p>
+      </div>
+
+      <fieldset class="field field--choice">
+        <legend>Shall you attend the Roce?<span class="req" aria-hidden="true">*</span></legend>
+        <div class="choice">
+          <label class="pill"><input type="radio" name="roce" value="Accepts with pleasure" required /><span>Accepts with pleasure</span></label>
+          <label class="pill"><input type="radio" name="roce" value="Declines with regret" /><span>Declines with regret</span></label>
+        </div>
+        <p class="field__error" data-for="roce"></p>
+      </fieldset>
+
+      <!-- Shown only when the Roce is accepted (animated dropdown, ported from emerald-ui) -->
+      <div class="field field--conditional" data-when="roce-yes" hidden>
+        <label id="partyLabel">Number in your party for the Roce</label>
+        <div class="dropdown" data-dropdown>
+          <button type="button" class="dropdown__btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="partyLabel">
+            <span class="dropdown__text" data-dropdown-text>Select a number</span>
+            <svg class="dropdown__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+          </button>
+          <div class="dropdown__menu" role="listbox" aria-labelledby="partyLabel">
+            <button type="button" class="dropdown__opt" role="option" data-value="1">1 guest</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="2">2 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="3">3 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="4">4 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="5">5 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="6">6 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="7">7 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="8">8 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="9">9 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="10">10 guests</button>
+          </div>
+          <input type="hidden" name="roce_headcount" data-dropdown-input />
+        </div>
+      </div>
+
+      <fieldset class="field field--choice">
+        <legend>Shall you attend the Wedding?<span class="req" aria-hidden="true">*</span></legend>
+        <div class="choice">
+          <label class="pill"><input type="radio" name="wedding" value="Accepts with pleasure" required /><span>Accepts with pleasure</span></label>
+          <label class="pill"><input type="radio" name="wedding" value="Declines with regret" /><span>Declines with regret</span></label>
+        </div>
+        <p class="field__error" data-for="wedding"></p>
+      </fieldset>
+
+      <!-- Shown only when the Wedding is accepted -->
+      <div class="field field--conditional" data-when="wedding-yes" hidden>
+        <label id="partyLabelWedding">Number in your party for the Wedding</label>
+        <div class="dropdown" data-dropdown>
+          <button type="button" class="dropdown__btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="partyLabelWedding">
+            <span class="dropdown__text" data-dropdown-text>Select a number</span>
+            <svg class="dropdown__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+          </button>
+          <div class="dropdown__menu" role="listbox" aria-labelledby="partyLabelWedding">
+            <button type="button" class="dropdown__opt" role="option" data-value="1">1 guest</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="2">2 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="3">3 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="4">4 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="5">5 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="6">6 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="7">7 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="8">8 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="9">9 guests</button>
+            <button type="button" class="dropdown__opt" role="option" data-value="10">10 guests</button>
+          </div>
+          <input type="hidden" name="wedding_headcount" data-dropdown-input />
+        </div>
+      </div>
+
+      <button type="submit" class="ihbtn" id="rsvpSubmit">
+        <span class="ihbtn__text">Seal &amp; send</span>
+        <span class="ihbtn__hover" aria-hidden="true">
+          <span>Seal &amp; send</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+        </span>
+        <span class="ihbtn__dot" aria-hidden="true"></span>
+      </button>
+      <p class="form__status" id="rsvpStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ───────────────────────── COLOPHON ───────────────────────── -->
+<footer class="colophon">
+  <svg class="flourish flourish--foot" aria-hidden="true"><use href="#flourish" /></svg>
+  <span class="foot-logo">
+    <span class="plate__frame" aria-hidden="true"></span>
+    <img class="monogram monogram--foot" src="assets/footer-logo.png" alt="" />
+  </span>
+  <p class="names names--small">Alisha &amp; Nelson</p>
+  <p class="tag">Pressed with care — 20 December 2026 · GALAXY BANQUETS, Mumbai</p>
+  <a class="colophon__top" href="#top">return to the top</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

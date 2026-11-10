@@ -1,0 +1,10 @@
+# Local tooling & editor
+.claude/
+.impeccable/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs / deps (if ever added)
+node_modules/
+*.log

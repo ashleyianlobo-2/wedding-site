@@ -1,0 +1,510 @@
+/* ============================================================
+   {{NAME_ONE}} & {{NAME_TWO}}
+   Pressed Botanical — a letterpress wedding monograph.
+   Ground: bottle-green cloth. Foil: gold hairline. Plates: pressed paper.
+   Display: Bodoni Moda (Didone). Text/labels: Spectral.
+   ============================================================ */
+
+:root {
+  /* Ground — bottle/forest green cloth */
+  --green-900: #09261a;
+  --green-800: #0e3b29;   /* primary ground */
+  --green-700: #134832;
+  --paper:     #efe7d3;   /* pressed-paper plate */
+  --paper-ink: #16281d;   /* ink on paper */
+
+  /* Ink on green */
+  --cream:     #f3ecdc;
+  --cream-dim: #b9ad8f;
+
+  /* Gold foil */
+  --gold:      #c9a227;
+  --gold-lite: #dcc277;   /* small gold text / labels (AA on green) */
+
+  --wrap: 1180px;
+  --col-gap: clamp(28px, 6vw, 96px);
+  --gutter: clamp(22px, 5vw, 80px);
+
+  /* Easing — Emil's strong curves (built-ins lack punch) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-inout: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* Modular type scale */
+  --t--1: clamp(0.72rem, 0.70rem + 0.12vw, 0.80rem);
+  --t-0:  clamp(1rem, 0.95rem + 0.22vw, 1.14rem);
+  --t-1:  clamp(1.3rem, 1.15rem + 0.7vw, 1.75rem);
+  --t-2:  clamp(1.9rem, 1.5rem + 1.9vw, 3rem);
+  --t-3:  clamp(2.6rem, 1.8rem + 3.6vw, 4.75rem);
+  --t-front: clamp(2.6rem, 1.4rem + 6vw, 7rem);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--green-800);
+  color: var(--cream);
+  overflow-x: hidden;
+  font-family: "Spectral", Georgia, serif;
+  font-weight: 300;
+  font-size: var(--t-0);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+.svg-defs { position: absolute; }
+
+/* Themed browser surfaces (craft floor: the parts you didn't draw still carry the design) */
+::selection { background: var(--gold); color: var(--green-900); }
+:focus-visible { outline: 2px solid var(--gold-lite); outline-offset: 3px; border-radius: 1px; }
+html { scrollbar-color: var(--gold) var(--green-900); }
+
+/* ── Shared type atoms ──────────────────────────────────── */
+.tag {
+  margin: 0;
+  font-size: var(--t--1);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold-lite);
+  font-weight: 400;
+}
+.tag--latin { color: var(--cream-dim); font-style: italic; letter-spacing: normal; text-transform: none; font-size: var(--t-0); }
+.heading {
+  font-family: "Bodoni Moda", Didot, "Times New Roman", serif;
+  font-weight: 500;
+  font-size: var(--t-2);
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  margin: 0 0 1.2rem;
+  text-wrap: balance;
+}
+.prose { max-width: 60ch; margin: 0; color: var(--cream); font-size: var(--t-1); font-weight: 300; line-height: 1.6; }
+.prose em { font-style: italic; color: var(--gold-lite); }
+.muted { color: var(--cream-dim); }
+.center { text-align: center; margin-inline: auto; }
+
+.names {
+  font-family: "Bodoni Moda", Didot, serif;
+  font-weight: 500;
+  font-size: var(--t-front);
+  line-height: 0.95;
+  margin: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 0.04em;
+  overflow-wrap: anywhere;
+}
+.names__amp { color: var(--gold); font-style: italic; font-weight: 400; font-size: 0.42em; }
+.names--small { font-size: var(--t-2); flex-direction: row; gap: 0.3em; }
+
+/* Botanical motifs (gold hairline, authored SVG) */
+.sprig, .flourish { color: var(--gold); display: block; }
+.sprig { width: clamp(44px, 7vw, 74px); height: clamp(150px, 24vw, 240px); margin-inline: auto; }
+.flourish { width: clamp(120px, 20vw, 180px); height: 24px; margin: 2.5rem 0 0; }
+.flourish--foot { margin: 0 auto 1.5rem; }
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.masthead {
+  position: fixed; inset: 0 0 auto 0; z-index: 20;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: clamp(14px, 2.4vw, 22px) var(--gutter);
+  background: linear-gradient(var(--green-900), transparent);
+  mix-blend-mode: normal;
+}
+.masthead__mark { position: relative; display: block; flex: none; line-height: 0; padding: clamp(7px, 1.4vw, 11px); }
+/* N&A monogram (assets/monogram.png — black ink on a TRANSPARENT background): recoloured to cream for the green bars */
+.monogram { display: block; height: clamp(36px, 4.5vw, 48px); width: auto; filter: brightness(0) invert(0.94) sepia(0.15); }
+.monogram--foot { height: clamp(72px, 9vw, 96px); margin: 0; }
+/* Footer logo in the same gold double-hairline engraving frame as the plates */
+.foot-logo { position: relative; display: inline-block; padding: clamp(16px, 3.5vw, 28px); margin: 0 auto 1.4rem; }
+/* Navbar R.S.V.P. — same gold-dot pill as "Seal & send", cream text on the dark bar */
+.masthead__rsvp.ihbtn {
+  flex: none; display: inline-block; min-width: 0; text-decoration: none;
+  color: var(--cream); font-size: var(--t--1); letter-spacing: 0.28em; padding: 0.7em 1.6em 0.7em 2.2em;
+}
+
+/* ============================================================
+   FRONTISPIECE
+   ============================================================ */
+.front { min-height: 100svh; display: grid; place-items: center; padding: 11vh var(--gutter) 7vh; }
+.plate { position: relative; width: 100%; }
+.front__card { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.invite-card {
+  display: block; width: min(100%, 560px); height: auto;
+  border-radius: 4px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Gold hairline engraving frame (double rule) */
+.plate__frame { position: absolute; inset: 0; pointer-events: none; }
+.plate__frame::before, .plate__frame::after { content: ""; position: absolute; border: 1px solid var(--gold); }
+.plate__frame::before { inset: 0; opacity: 0.85; }
+.plate__frame::after { inset: 6px; opacity: 0.35; }
+
+
+.cue { display: inline-flex; flex-direction: column; align-items: center; gap: 0.9rem; margin-top: clamp(34px, 6vh, 64px); text-decoration: none; }
+.cue__word { font-size: var(--t--1); letter-spacing: 0.26em; text-transform: uppercase; color: var(--cream-dim); transition: color 240ms var(--ease-out); }
+.cue:hover .cue__word { color: var(--gold-lite); }
+.cue__line { width: 1px; height: 52px; background: linear-gradient(var(--gold), transparent); transform-origin: top; animation: cue 2.6s var(--ease-inout) infinite; }
+@keyframes cue { 0%,100% { transform: scaleY(0.35); opacity: 0.35; } 50% { transform: scaleY(1); opacity: 1; } }
+
+/* ============================================================
+   PORTAL — scroll-driven camera through type (ported from
+   Glyph Portal, scroll animation only). The word is a clip over
+   a green field; scroll flies the camera into one letter until
+   the field fills the frame and the story is revealed behind it.
+   ============================================================ */
+/* height = scroll room for the zoom: pin stays stuck until p≈0.8 (zoom ends at 0.78), then the green field scrolls away */
+.portal { --len: 2.4; position: relative; height: calc((var(--len) * 0.8 + 1) * 100svh); background: var(--paper); color: var(--paper-ink); }
+.portal__pin { position: sticky; top: 0; height: 100svh; overflow: clip; isolation: isolate; }
+.portal__field {
+  position: absolute; inset: 0; opacity: 0;
+  clip-path: url(#portal-clip);
+  background:
+    radial-gradient(circle at 20% 12%, rgba(27,74,52,0.9), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(9,38,26,0.6), transparent 46%),
+    linear-gradient(135deg, var(--green-700) 0%, var(--green-800) 48%, var(--green-900) 100%);
+}
+.portal[data-ready] .portal__field { opacity: 1; }
+.portal__art { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.portal__glyph {
+  font-family: "Bodoni Moda", Didot, serif; font-weight: 600;
+  font-size: 100px; font-kerning: none; letter-spacing: 0;
+}
+.portal__cap {
+  position: absolute; inset: auto 0 9% 0; text-align: center;
+  color: var(--paper-ink); opacity: var(--cap, 1);
+}
+/* Countdown sitting just above the word: "[timer] until forever".
+   Vapor digits — real <time> drives SR/reduced-motion; grains draw the face. */
+.portal__timer {
+  position: absolute; inset: auto 0 calc(100% - var(--word-top, 31vh) + 1.25rem) 0; margin: 0; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--paper-ink); opacity: var(--cap, 1); pointer-events: none;
+}
+.vapor {
+  position: relative; display: inline-flex; align-items: center; gap: 0.1em;
+  font-family: Geist, "Helvetica Neue", Arial, sans-serif; font-weight: 600; line-height: 1;
+  letter-spacing: -0.025em; font-size: clamp(2.5rem, 8vw, 5rem);
+}
+.vapor__time { display: inline-flex; align-items: flex-start; gap: 0.12em; }
+.vapor__sep { display: inline-flex; justify-content: center; width: 0.3em; opacity: 0; color: #000; }
+.vapor__unit { display: inline-flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+.vapor__grp { display: inline-flex; }
+.vapor__lbl {
+  font: 400 10px/1 "Geist Mono", ui-monospace, monospace;
+  letter-spacing: 0.25em; text-transform: uppercase; color: #5f521f; padding-left: 0.25em;
+}
+.vapor [data-vc-digit] {
+  display: inline-flex; justify-content: center; width: 0.6em;
+  font-variant-numeric: tabular-nums; opacity: 0; color: #000;
+}
+.vapor__canvas { position: absolute; pointer-events: none; }
+.portal__until { font-size: var(--t--1); letter-spacing: 0.34em; text-transform: uppercase; color: #5f521f; }
+@media (prefers-reduced-motion: reduce) {
+  .portal__timer { position: static; padding-top: 2rem; }
+  .vapor [data-vc-digit], .vapor__sep { opacity: 1; }
+  .vapor__canvas { display: none; }
+}
+
+/* ============================================================
+   PLATE ROWS (label column + body column)
+   ============================================================ */
+.plate-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.4fr) 1fr;
+  gap: var(--col-gap);
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding: clamp(72px, 11vw, 150px) var(--gutter);
+  align-items: start;
+}
+.plate-row--alt { background: var(--green-900); max-width: none; }
+.plate-row--alt > * { }
+.plate-row--alt .col:first-child { margin-left: max(var(--gutter), calc((100% - var(--wrap)) / 2)); }
+.col--label { position: sticky; top: 14vh; display: grid; gap: 0.6rem; }
+.col--label .tag { padding-bottom: 0.6rem; border-bottom: 1px solid rgba(201,162,39,0.3); }
+.col--body { min-width: 0; }
+
+/* Ledger (Plate II) — specimen key with gold dotted leaders */
+.ledger { margin: 0; }
+.ledger__row { display: grid; grid-template-columns: minmax(96px, auto) 1fr auto; align-items: baseline; gap: 0.6em; padding: 0.95rem 0; border-bottom: 1px solid rgba(201,162,39,0.18); }
+.ledger__row:first-child { border-top: 1px solid rgba(201,162,39,0.18); }
+.ledger dt { font-size: var(--t--1); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-lite); }
+.ledger dd { grid-column: 3; margin: 0; font-family: "Bodoni Moda", serif; font-size: var(--t-1); color: var(--cream); text-align: right; }
+.ledger__row::after { content: ""; grid-column: 2; align-self: center; height: 0; border-bottom: 1px dotted rgba(201,162,39,0.45); }
+
+/* Roce / Wedding tabs — CSS-only toggle (radios hidden but focusable) */
+.event-radio { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.event-tabs { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem; }
+.event-tab {
+  font-size: var(--t-0); font-style: italic; font-family: "Bodoni Moda", serif;
+  color: var(--cream-dim); cursor: pointer; width: fit-content;
+  padding-bottom: 2px; border-bottom: 1px solid transparent;
+  transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.event-tab:hover { color: var(--gold-lite); }
+#tab-roce:checked ~ .col--label .event-tab[for="tab-roce"],
+#tab-wedding:checked ~ .col--label .event-tab[for="tab-wedding"] { color: var(--gold); border-bottom-color: var(--gold); }
+.event-radio:focus-visible ~ .col--label .event-tab { outline: 2px solid var(--gold-lite); outline-offset: 3px; }
+.event-panel { display: none; }
+#tab-roce:checked ~ .col--body .event-panel[data-event="roce"],
+#tab-wedding:checked ~ .col--body .event-panel[data-event="wedding"] { display: block; }
+
+/* Order of the day (Plate III) */
+.order { list-style: none; margin: 0; padding: 0; }
+.order__item { display: grid; grid-template-columns: minmax(64px, auto) 1fr auto; align-items: baseline; gap: 0.8em; padding: 1.1rem 0; border-bottom: 1px solid rgba(201,162,39,0.18); }
+.order__item:first-child { border-top: 1px solid rgba(201,162,39,0.18); }
+.order__time { font-family: "Bodoni Moda", serif; font-size: var(--t-1); color: var(--gold-lite); }
+.order__leader { align-self: center; height: 0; border-bottom: 1px dotted rgba(201,162,39,0.4); }
+.order__name { font-family: "Bodoni Moda", serif; font-size: var(--t-1); color: var(--cream); text-align: right; }
+
+/* ============================================================
+   SPECIMENS (Plate IV — gallery)
+   ============================================================ */
+.specimens { max-width: var(--wrap); margin-inline: auto; padding: clamp(72px, 11vw, 150px) var(--gutter); }
+.specimens__head { margin-bottom: clamp(36px, 6vw, 68px); }
+.specimens__head .tag { text-align: center; margin-bottom: 0.9rem; }
+.specimens__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 3vw, 34px); align-items: start; }
+.specimen { margin: 0; position: relative; }
+.specimen img {
+  width: 100%; object-fit: cover; border: 1px solid rgba(201,162,39,0.4);
+  filter: saturate(0.82) sepia(0.08) brightness(0.96);
+  background: var(--green-900);
+}
+.specimen figcaption { margin-top: 0.7rem; text-align: center; }
+
+/* ============================================================
+   REPLY CARD (Plate V — RSVP)
+   ============================================================ */
+.reply { position: relative; overflow: hidden; padding: clamp(72px, 11vw, 150px) var(--gutter); display: grid; place-items: center; }
+/* Animated gold dot-grid behind the reply card (flickering grid, radial intro) */
+.reply__dots { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.plate--reply { position: relative; z-index: 1; max-width: 540px; background: var(--paper); color: var(--paper-ink); padding: clamp(30px, 4.5vw, 52px) clamp(22px, 4vw, 42px); border-radius: 1px; box-shadow: 0 18px 50px rgba(9, 38, 26, 0.5); }
+.plate--reply .plate__frame::before { border-color: rgba(20,40,29,0.5); opacity: 1; }
+.plate--reply .plate__frame::after { border-color: rgba(20,40,29,0.2); }
+.plate--reply .tag { color: #5f521f; }
+.plate--reply .heading { color: var(--paper-ink); }
+.plate--reply .prose { color: #37473a; }
+.plate--reply .prose em { color: #5f521f; }
+.reply__head { text-align: center; margin-bottom: clamp(28px, 4vw, 44px); }
+.reply__head .tag { margin-bottom: 0.8rem; }
+
+/* Watching diamond ring above the form: ink-hairline gem face on a gold band */
+.peeker { --px: 0px; --py: 0px; position: relative; width: 140px; height: 150px; margin: 0 auto 1.2rem; }
+.peeker__ring { display: block; overflow: visible; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.peeker__gem { stroke: rgba(22, 40, 29, 0.6); stroke-width: 1.2; }
+.peeker__band { stroke: var(--gold); stroke-width: 2.5; }
+.peeker__eyes { /* eye centres sit at x 55 / 85, straddling the girdle line (y 40) */
+  position: absolute; top: 26px; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 8px;
+}
+.peeker__eye {
+  width: 22px; height: 28px; background: #fffaf0; border: 1px solid var(--paper-ink);
+  border-radius: 50% / 60%; display: grid; place-items: center; overflow: hidden;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.peeker__pupil {
+  width: 11px; height: 11px; border-radius: 50%; background: var(--paper-ink);
+  transform: translate(var(--px), var(--py)); transition: transform 0.1s ease, opacity 0.1s ease;
+}
+.peeker.is-blink .peeker__eye, .peeker.is-shut .peeker__eye { transform: scaleY(0.1); background: var(--paper-ink); }
+.peeker.is-shut .peeker__pupil { opacity: 0; }
+
+/* Form */
+.form { display: grid; gap: clamp(13px, 2.2vw, 18px); }
+.field { display: grid; gap: 0.5rem; }
+.field--choice { border: 0; margin: 0; padding: 0; }
+.field--conditional[hidden] { display: none; } /* .field's display:grid otherwise defeats [hidden] */
+.field label, .field legend { font-size: var(--t--1); letter-spacing: 0.16em; text-transform: uppercase; color: #5f521f; font-weight: 400; }
+.field .muted { color: #5f521f; }
+.req { color: var(--gold); margin-left: 0.2em; }
+
+.field input[type="text"], .field input[type="number"], .field select, .field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(20,40,29,0.28);
+  border-radius: 1px;
+  color: var(--paper-ink);
+  font-family: "Spectral", serif; font-size: var(--t-0); font-weight: 300;
+  padding: 0.8em 0.95em;
+  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out);
+}
+.field textarea { resize: vertical; min-height: 3.5em; }
+.field :is(input, select, textarea):focus { outline: none; border-color: var(--gold); background: #fff; }
+.field select option { color: var(--paper-ink); background: var(--paper); }
+
+/* Animated dropdown — emerald-ui styling (slate, rounded-md, 2px borders,
+   text-sm, 20px chevron, items slide in from the left) */
+.dropdown { position: relative; display: inline-block; min-width: 100%; }
+.dropdown__btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 2.5rem; padding: 0.5rem 1rem; width: 100%;
+  border: 1px solid #e2e8f0; border-radius: 0.375rem; background: #fff;
+  color: #0f172a; font-family: "Geist", "Inter", -apple-system, sans-serif;
+  font-size: 0.875rem; font-weight: 500; cursor: pointer;
+  transition: background 150ms var(--ease-out), color 150ms var(--ease-out);
+}
+.dropdown__btn:hover { background: #f1f5f9; }
+.dropdown__btn:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #94a3b8; }
+.dropdown__text { flex: 1; text-align: left; }
+.dropdown__chev { width: 1.25rem; height: 1.25rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 200ms var(--ease-inout); }
+.dropdown[data-open] .dropdown__chev { transform: rotate(180deg); }
+.dropdown__menu {
+  position: absolute; top: calc(100% + 0.5rem); left: 50%; z-index: 50;
+  width: fit-content; min-width: 100%; transform: translateX(-50%) translateY(-10px) scale(0.95);
+  overflow: hidden; border: 2px solid #e2e8f0; border-radius: 0.375rem; background: #f1f5f9;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+  opacity: 0; transform-origin: top center; visibility: hidden;
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), visibility 0s linear 200ms;
+}
+.dropdown[data-open] .dropdown__menu { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); visibility: visible; transition-delay: 0s; }
+.dropdown__opt {
+  display: block; width: 100%; text-align: left; cursor: pointer;
+  padding: 0.5rem 0.75rem; border: 0; border-bottom: 2px solid #e2e8f0;
+  background: #f8fafc; color: #0f172a;
+  font-family: "Geist", "Inter", -apple-system, sans-serif; font-size: 0.875rem;
+  opacity: 0; transform: translateX(-20px);
+  transition: background 150ms var(--ease-out), opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.dropdown__opt:last-child { border-bottom: 0; }
+.dropdown__opt:hover, .dropdown__opt:focus-visible { background: #e2e8f0; outline: none; }
+.dropdown[data-open] .dropdown__opt { opacity: 1; transform: none; }
+.dropdown[data-open] .dropdown__opt:nth-child(1) { transition-delay: 0.03s; }
+.dropdown[data-open] .dropdown__opt:nth-child(2) { transition-delay: 0.06s; }
+.dropdown[data-open] .dropdown__opt:nth-child(3) { transition-delay: 0.09s; }
+.dropdown[data-open] .dropdown__opt:nth-child(4) { transition-delay: 0.12s; }
+.dropdown[data-open] .dropdown__opt:nth-child(5) { transition-delay: 0.15s; }
+.dropdown[data-open] .dropdown__opt:nth-child(6) { transition-delay: 0.18s; }
+.dropdown[data-open] .dropdown__opt:nth-child(7) { transition-delay: 0.21s; }
+.dropdown[data-open] .dropdown__opt:nth-child(8) { transition-delay: 0.24s; }
+.dropdown[data-open] .dropdown__opt:nth-child(9) { transition-delay: 0.27s; }
+.dropdown[data-open] .dropdown__opt:nth-child(10) { transition-delay: 0.30s; }
+@media (prefers-reduced-motion: reduce) {
+  .dropdown__menu, .dropdown__opt, .dropdown__chev { transition-duration: 1ms; }
+  .dropdown__opt { opacity: 1; transform: none; }
+}
+
+.choice { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.pill {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  border: 1px solid rgba(20,40,29,0.3); border-radius: 100px;
+  padding: 0.7em 1.25em; cursor: pointer;
+  font-size: var(--t-0); color: var(--paper-ink);
+  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out), transform 140ms var(--ease-out);
+}
+.pill span { line-height: 1; }
+.pill:has(input:checked) { border-color: var(--gold); background: rgba(201,162,39,0.14); }
+.pill:active { transform: scale(0.97); }
+.pill input { accent-color: var(--gold); margin: 0; }
+@media (hover: hover) and (pointer: fine) { .pill:hover { border-color: var(--gold); } }
+
+.field__error { margin: 0; min-height: 0; color: #9a3a26; font-size: var(--t--1); font-style: italic; }
+.field__error:not(:empty) { min-height: 1.2em; margin-top: 0.1rem; }
+
+.btn {
+  justify-self: start; appearance: none; cursor: pointer;
+  background: var(--green-800); color: var(--paper);
+  border: 1px solid var(--green-800);
+  font-family: "Spectral", serif; font-weight: 400; font-size: var(--t-0);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.95em 2.2em; border-radius: 1px;
+  transition: transform 150ms var(--ease-out), background 220ms var(--ease-out);
+}
+.btn:hover { background: var(--green-700); }
+.btn:active { transform: scale(0.97); }
+.btn[disabled] { opacity: 0.55; cursor: default; transform: none; }
+
+/* Interactive hover button (ported) — text slides out, text+arrow slides in,
+   a gold dot expands to fill the pill. Kept gold. */
+.ihbtn {
+  position: relative; justify-self: start; overflow: hidden; cursor: pointer;
+  border: 1px solid var(--gold); border-radius: 999px; background: transparent;
+  color: var(--paper-ink); font-family: "Spectral", serif; font-weight: 500;
+  font-size: var(--t-0); letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.85em 2em; min-width: 12rem; text-align: center; line-height: 1;
+}
+.ihbtn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.ihbtn__text { display: inline-block; transform: translateX(4px); transition: transform 300ms var(--ease-out), opacity 300ms var(--ease-out); }
+.ihbtn:hover .ihbtn__text { transform: translateX(3rem); opacity: 0; }
+.ihbtn__hover {
+  position: absolute; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  color: var(--green-900); transform: translateX(3rem); opacity: 0;
+  transition: transform 300ms var(--ease-out), opacity 300ms var(--ease-out);
+}
+.ihbtn:hover .ihbtn__hover { transform: translateX(-0.25rem); opacity: 1; }
+.ihbtn__hover svg { width: 1.1em; height: 1.1em; }
+.ihbtn__dot {
+  position: absolute; left: 0.9em; top: calc(50% - 0.25rem); width: 0.5rem; height: 0.5rem; /* in the left padding, clear of the text */
+  border-radius: 0.5rem; background: var(--gold);
+  transition: all 300ms var(--ease-out);
+}
+.ihbtn:hover .ihbtn__dot { left: 0; top: 0; width: 100%; height: 100%; border-radius: 999px; transform: scale(1.8); }
+.ihbtn[disabled] { opacity: 0.55; cursor: default; }
+.ihbtn[disabled]:hover .ihbtn__text { transform: translateX(4px); opacity: 1; }
+.ihbtn[disabled]:hover .ihbtn__hover { opacity: 0; }
+.ihbtn[disabled]:hover .ihbtn__dot { left: 0.9em; top: calc(50% - 0.25rem); width: 0.5rem; height: 0.5rem; border-radius: 0.5rem; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ihbtn__text, .ihbtn__hover, .ihbtn__dot { transition-duration: 1ms; }
+}
+
+.form__status { margin: 0; min-height: 0; font-style: italic; font-family: "Bodoni Moda", serif; font-size: var(--t-1); }
+.form__status:not(:empty) { min-height: 1.4em; margin-top: 0.4rem; }
+.form__status.is-ok { color: #4a6b3a; }
+.form__status.is-err { color: #9a3a26; }
+
+/* ============================================================
+   COLOPHON
+   ============================================================ */
+.colophon { text-align: center; padding: clamp(60px, 9vw, 110px) var(--gutter); border-top: 1px solid rgba(201,162,39,0.2); }
+.colophon .names--small { justify-content: center; margin: 0 0 0.6rem; }
+.colophon .tag { letter-spacing: 0.14em; }
+.colophon__top { display: inline-block; margin-top: 1.4rem; font-size: var(--t--1); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-lite); text-decoration: none; }
+.colophon__top:hover { color: var(--gold); }
+
+/* ============================================================
+   SCROLL MOTION — one authored grammar (Emil: strong ease-out,
+   clip-path specimen reveals, 30–80ms stagger)
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal[data-d="1"] { transition-delay: 0.06s; }
+.reveal[data-d="2"] { transition-delay: 0.12s; }
+
+/* Specimen plates reveal with a clip-path wipe up (not fade-from-nothing) */
+.specimen { opacity: 0; clip-path: inset(0 0 100% 0); transition: opacity 0.9s var(--ease-out), clip-path 1s var(--ease-out), transform 0.9s var(--ease-out); transform: translateY(14px); }
+.specimen.in { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
+
+/* Frontispiece entrance (JS adds .ready) */
+[data-rise] { opacity: 0; transform: translateY(18px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.front.ready [data-rise] { opacity: 1; transform: none; }
+.front.ready [data-rise="2"] { transition-delay: 0.08s; }
+.front.ready [data-rise="3"] { transition-delay: 0.16s; }
+.front.ready [data-rise="4"] { transition-delay: 0.34s; }
+.front.ready [data-rise="5"] { transition-delay: 0.5s; }
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .plate-row { grid-template-columns: 1fr; gap: 1.5rem; }
+  .col--label { position: static; top: auto; }
+  .col--label .tag { border-bottom: none; padding-bottom: 0; }
+  .plate-row--alt .col:first-child { margin-left: 0; }
+  .specimens__grid { grid-template-columns: 1fr; }
+  .names--small { font-size: var(--t-1); }
+}
+
+/* ── Reduced motion — keep opacity, drop movement (Emil) ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, [data-rise] {
+    opacity: 1 !important; transform: none !important; transition: opacity 0.3s ease !important;
+  }
+  .specimen { clip-path: none !important; }
+  .cue__line { animation: none; }
+  /* Portal: skip the camera, show the word on the field, then the story */
+  .portal__pin { position: relative !important; height: auto !important; padding: 18vh var(--gutter); }
+  .portal__field { opacity: 1 !important; clip-path: none !important; }
+  .portal { height: auto; }
+  .portal__cap { display: none; }
+}
